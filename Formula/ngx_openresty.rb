@@ -41,7 +41,9 @@ class NgxOpenresty < Formula
     end
 
     # Download the ssl-cert-by-lua branch and add ssl.lua to the lua_package_path
+    system "mkdir -p #{buildpath}"
     system "curl -s -L -o #{buildpath}/ssl-cert-by-lua.tar.gz https://github.com/openresty/lua-nginx-module/archive/ssl-cert-by-lua.tar.gz"
+
     system "tar -xzf ssl-cert-by-lua.tar.gz"
     system "rm -rf bundle/ngx_lua-0.9.15/*"
     system "cp -R lua-nginx-module-ssl-cert-by-lua/* bundle/ngx_lua-0.9.15/"
